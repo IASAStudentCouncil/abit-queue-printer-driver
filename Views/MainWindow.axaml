@@ -1,0 +1,45 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:abit_queue_printer_driver.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="300"
+        Width="600" Height="300"
+        x:Class="abit_queue_printer_driver.Views.MainWindow"
+        Icon="/Assets/logo-y.png"
+        Title="abit_queue_printer_driver">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <Grid VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <NumericUpDown Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Value="{Binding QueueNumber}"></NumericUpDown>
+            <Button Grid.Row="1" x:Name="Print" Command="{Binding  PrintTestCommand}" HorizontalAlignment="Center" VerticalAlignment="Center">Print</Button>
+        </Grid>
+        <Button Grid.Column="1" x:Name="RedButton" Command="{Binding ButtonCommand}" Width="80" Height="80" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Red">Button</Button>
+        <Grid Grid.Column="2" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" x:Name="ApiAddressTextBox" Watermark="api address" Text="{Binding ApiAdress}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBox>
+            <ComboBox Grid.Row="1" x:Name="PrinterSelector" HorizontalAlignment="Center" VerticalAlignment="Center" Items="{Binding PrintersList}" SelectedItem="{Binding SelectedPrinter}"></ComboBox>
+            <ComboBox Grid.Row="2" x:Name="SerialPortSelector" HorizontalAlignment="Center" VerticalAlignment="Center" Items="{Binding SerialPortsList}" SelectedItem="{Binding SelectedSerialPort}"></ComboBox>
+        </Grid>
+        <Button Grid.Column="3" x:Name="Refresh" Command="{Binding RefreshCommand}" HorizontalAlignment="Center">Refresh</Button>
+    </Grid>
+
+    </Window>
